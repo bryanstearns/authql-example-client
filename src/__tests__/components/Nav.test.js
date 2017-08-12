@@ -8,8 +8,16 @@ const setup = (props) => {
   return {props, wrapper}
 }
 
-test('it renders', () => {
-  const {wrapper} = setup({})
-  //expect.assertions(1)
+test('it renders when logged in', () => {
+  const {wrapper} = setup({currentUser: "bob"})
   expect(wrapper.find("nav a.home").length).toBe(1)
+  expect(wrapper.find("nav a.login").length).toBe(0)
+  expect(wrapper.find("nav a.logout").length).toBe(1)
+})
+
+test('it renders when not logged in', () => {
+  const {wrapper} = setup({currentUser: undefined})
+  expect(wrapper.find("nav a.home").length).toBe(1)
+  expect(wrapper.find("nav a.login").length).toBe(1)
+  expect(wrapper.find("nav a.logout").length).toBe(0)
 })

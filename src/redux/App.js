@@ -7,6 +7,8 @@ import createStore from './createStore'
 import apolloClient from './apolloClient'
 import createRootReducer from './createRootReducer'
 import Home from '../components/Home'
+import Login from '../containers/Login'
+import Logout from '../containers/Logout'
 import Nav from '../components/Nav'
 
 const history = createBrowserHistory()
@@ -21,6 +23,8 @@ export const App = () => {
           <Nav />
           <div className="content">
             <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/logout" component={Logout} />
           </div>
         </div>
       </Router>

@@ -1,17 +1,26 @@
 import { ApolloClient, createNetworkInterface } from 'react-apollo'
+import { tokenKey } from '../reducers/authReducer'
 
 const uri = "http://localhost:4000/api"
 const networkInterface = createNetworkInterface({uri})
 networkInterface.use([{
   applyMiddleware(req, next) {
-    if (!req.options.headers) {
-      req.options.headers = {}
+    const token = localStorage.getItem(tokenKey);
+    if (token) {
+      if (!req.options.headers) {
+        req.options.headers = {}
+      }
+      req.options.headers.authorization = `Bearer ${token}`;
     }
 
-    const token = localStorage.getItem('token');
-    req.options.headers.authorization = token ? `Bearer ${token}` : null;
     next();
   }
 }])
+
+export const networkOnlyFetchPolicy = {
+  options: {
+    fetchPolicy: 'network-only'
+  }
+}
 
 export default new ApolloClient({networkInterface})
