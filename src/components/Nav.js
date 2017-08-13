@@ -21,6 +21,7 @@ const signedInLinks = (currentUser) => (
 export const Nav = ({currentUser}) => (
   <nav>
     <NavLink className="home" to="/" exact>Home</NavLink>
+    <NavLink className="users" to="/users" exact>Users</NavLink>
     {(typeof(currentUser) === 'undefined')
       ? signedOutLinks()
       : signedInLinks(currentUser)}

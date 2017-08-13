@@ -10,6 +10,7 @@ import Home from '../components/Home'
 import Login from '../containers/Login'
 import Logout from '../containers/Logout'
 import Nav from '../components/Nav'
+import Users from '../containers/Users'
 
 const history = createBrowserHistory()
 const rootReducer = createRootReducer(apolloClient.reducer())
@@ -23,6 +24,7 @@ export const App = () => {
           <Nav />
           <div className="content">
             <Route exact path="/" component={Home} />
+            <Route path="/users" component={Users} />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
           </div>
