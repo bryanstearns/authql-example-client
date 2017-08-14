@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { gql, graphql, withApollo, compose } from 'react-apollo'
-import { networkOnlyFetchPolicy } from '../redux/apolloClient'
+import { networkOnlyFetchPolicy } from '../graphql/apolloClient'
 import LoginPanel from '../components/LoginPanel'
 import { Creators } from '../reducers/authReducer'
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { gql, graphql } from 'react-apollo'
+import { gql, graphql, compose } from 'react-apollo'
+import { withAuth } from '../graphql/withAuth'
 
 const usersQuery = gql`
   query usersQuery {
@@ -11,14 +12,7 @@ const usersQuery = gql`
   }
 `
 
-export const Users = ({data}) => {
-  const {loading, error, users} = data
-  if (error) {
-    return (<span>Oops: {error.message}</span>)
-  }
-  if (loading) {
-    return (<span>(loading...)</span>)
-  }
+export const Users = ({users}) => {
   if (users.length === 0) {
     return (<span>No users yet.</span>)
   }
@@ -35,11 +29,10 @@ export const Users = ({data}) => {
 }
 
 Users.propTypes = {
-  data: PropTypes.shape({
-    loading: PropTypes.bool.isRequired,
-    users: PropTypes.array,
-    error: PropTypes.object
-  }).isRequired
+  users: PropTypes.array.isRequired
 };
 
-export default graphql(usersQuery)(Users)
+export default compose(
+  graphql(usersQuery),
+  withAuth()
+)(Users)

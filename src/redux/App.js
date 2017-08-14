@@ -4,7 +4,7 @@ import createBrowserHistory from 'history/createBrowserHistory'
 import { ApolloProvider } from 'react-apollo'
 
 import createStore from './createStore'
-import apolloClient from './apolloClient'
+import apolloClient from '../graphql/apolloClient'
 import createRootReducer from './createRootReducer'
 import Home from '../components/Home'
 import Login from '../containers/Login'

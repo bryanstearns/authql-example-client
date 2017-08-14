@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../redux/App';
+import App from '../../redux/App';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

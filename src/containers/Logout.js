@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { gql, graphql, withApollo, compose } from 'react-apollo'
 import { connect } from 'react-redux'
-import { networkOnlyFetchPolicy } from '../redux/apolloClient'
+import { networkOnlyFetchPolicy } from '../graphql/apolloClient'
 import { Creators } from '../reducers/authReducer'
 
 const logoutMutation = gql`
