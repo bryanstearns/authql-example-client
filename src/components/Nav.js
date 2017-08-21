@@ -13,6 +13,7 @@ const signedOutLinks = () => (
 
 const signedInLinks = (currentUser) => (
   <span>
+    <NavLink className="account" to="/account">My Account</NavLink>
     <NavLink className="logout" to="/logout">Sign out</NavLink>
     <span className="currentUser">({currentUser})</span>
   </span>
