@@ -37,6 +37,6 @@ const mapStateToProps = (state) => {
 }
 export default compose(
   connect(mapStateToProps),
-  graphql(accountQuery),
+  graphql(accountQuery, {options: {notifyOnNetworkStatusChange: true}}),
   withAuth()
 )(Account)
