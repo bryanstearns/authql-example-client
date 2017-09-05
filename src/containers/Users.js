@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { gql, graphql, compose } from 'react-apollo'
-import { withAuth } from 'authql'
+import { gql } from 'react-apollo'
+import { graphqlWithAuth } from 'authql'
 
 const usersQuery = gql`
   query usersQuery($viewer: String) {
@@ -34,13 +33,4 @@ Users.propTypes = {
   viewer: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => {
-  return {
-    viewer: state.auth.viewer
-  }
-}
-export default compose(
-  connect(mapStateToProps),
-  graphql(usersQuery, {options: {notifyOnNetworkStatusChange: true}}),
-  withAuth()
-)(Users)
+export default graphqlWithAuth(usersQuery)(Users)
